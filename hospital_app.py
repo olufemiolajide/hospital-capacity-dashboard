@@ -68,7 +68,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <h1>🏥 Hospital Capacity Planning Dashboard</h1>
-    <p>Strategic simulation tool for optimizing staffing and reducing patient wait times</p>
+    <p>Strategic simulation tool for optimising staffing and reducing patient wait times</p>
     <p><em>Comprehensive analysis across 25 medical specialties</em></p>
 </div>
 """, unsafe_allow_html=True)
@@ -153,7 +153,7 @@ def calculate_metrics(specialty, doctors, non_doctors, doctor_rate, non_doctor_r
     Calculate comprehensive performance metrics for a hospital specialty.
     
     Returns dictionary with all key performance indicators including:
-    - Capacity utilization
+    - Capacity utilisation
     - Backlog projections
     - Wait time forecasts
     - Resource requirements
@@ -210,7 +210,7 @@ def calculate_metrics(specialty, doctors, non_doctors, doctor_rate, non_doctor_r
         'Wait Change (weeks)': int(round(wait_change, 0)),
         'Time to Clear': time_to_clear,
         'Months to Clear': months_to_clear,
-        'Utilization (%)': int(round((daily_arrivals / daily_capacity) * 100, 0)),
+        'Utilisation (%)': int(round((daily_arrivals / daily_capacity) * 100, 0)),
         'Status': status,
         'Status Class': status_class
     }
@@ -223,7 +223,7 @@ def run_detailed_simulation(specialty_config, simulation_days):
     - Patient backlogs
     - Wait times
     - Treatment capacity
-    - Resource utilization
+    - Resource utilisation
     """
     detailed_results = []
     
@@ -372,14 +372,14 @@ simulation_days = st.sidebar.slider(
     max_value=365, 
     value=180, 
     step=30,
-    help="Select the time horizon for capacity planning analysis"
+    help="Select the time horison for capacity planning analysis"
 )
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🏥 Specialty Configuration")
 
 # Comprehensive hospital specialty configuration
-# Organized by capacity deficit levels for realistic modeling
+# Organised by capacity deficit levels for realistic modeling
 SPECIALTY_CONFIG = {
     # High-Demand Specialties (Capacity Constrained)
     'Dermatology': {
@@ -671,12 +671,12 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         )
     
     with col3:
-        avg_utilization = int(results_df['Utilization (%)'].mean())
-        color = "normal" if 80 <= avg_utilization <= 95 else "inverse"
+        avg_utilisation = int(results_df['Utilisation (%)'].mean())
+        color = "normal" if 80 <= avg_utilisation <= 95 else "inverse"
         st.metric(
-            "Average Utilization", 
-            f"{avg_utilization}%",
-            help="Hospital-wide capacity utilization rate"
+            "Average Utilisation", 
+            f"{avg_utilisation}%",
+            help="Hospital-wide capacity utilisation rate"
         )
     
     with col4:
@@ -716,7 +716,7 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         best_10['Backlog Change'] = best_10['Backlog Change'].apply(lambda x: f"{int(x):+,}")
         st.dataframe(best_10, use_container_width=True, height=350)
     
-    # Comprehensive performance visualization
+    # Comprehensive performance visualisation
     st.header("📊 Performance Analytics")
     
     col1, col2, col3 = st.columns(3)
@@ -756,15 +756,15 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         st.plotly_chart(fig_wait, use_container_width=True)
     
     with col3:
-        # Capacity utilization analysis
+        # Capacity utilisation analysis
         fig_util = px.bar(
             results_df,
             x='Specialty',
-            y='Utilization (%)',
-            color='Utilization (%)',
+            y='Utilisation (%)',
+            color='Utilisation (%)',
             color_continuous_scale=['green', 'yellow', 'red'],
-            title="Capacity Utilization by Specialty",
-            text='Utilization (%)'
+            title="Capacity Utilisation by Specialty",
+            text='Utilisation (%)'
         )
         fig_util.update_traces(texttemplate='%{text:.0f}%', textposition='outside')
         fig_util.add_hline(
@@ -775,7 +775,7 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         )
         fig_util.update_layout(showlegend=False, height=450)
         fig_util.update_xaxes(tickangle=45, title="Medical Specialty")
-        fig_util.update_yaxes(title="Utilization Rate (%)")
+        fig_util.update_yaxes(title="Utilisation Rate (%)")
         st.plotly_chart(fig_util, use_container_width=True)
     
     # Time series trend analysis
@@ -971,8 +971,8 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
     st.info("""
     **📋 Recommended Actions:**
     • **Resource Reallocation**: Redirect staff from high-performing to critical specialties
-    • **Capacity Expansion**: Prioritize hiring for departments with >100% utilization
-    • **Process Optimization**: Implement efficiency improvements in bottleneck areas
+    • **Capacity Expansion**: Prioritise hiring for departments with >100% utilisation
+    • **Process Optimisation**: Implement efficiency improvements in bottleneck areas
     • **Strategic Planning**: Develop long-term capacity plans for sustainable growth
     """)
     
@@ -1015,16 +1015,16 @@ else:
     **📊 Comprehensive Analysis**
     • Model capacity across 25 medical specialties
     • Forecast patient wait times and backlog trends
-    • Analyze resource utilization and efficiency
+    • Analyse resource utilisation and efficiency
     
     **🎯 Strategic Planning**
     • Test staffing scenarios before implementation
     • Identify critical capacity constraints
-    • Optimize resource allocation decisions
+    • Optimise resource allocation decisions
     
     **📈 Performance Monitoring**
     • Track department-level performance metrics
-    • Monitor system-wide capacity utilization
+    • Monitor system-wide capacity utilisation
     • Generate executive-ready reports
     
     ### **Enhanced Features**
@@ -1041,7 +1041,7 @@ else:
     2. **Configure Parameters**: Adjust individual specialties if needed
     3. **Set Time Horizon**: Choose simulation duration (30-365 days)
     4. **Run Analysis**: Execute comprehensive capacity modeling
-    5. **Review Results**: Analyze performance metrics and strategic recommendations
+    5. **Review Results**: Analyse performance metrics and strategic recommendations
     6. **Export Data**: Download results for presentations and further analysis
     
     ### **Key Features**
@@ -1060,6 +1060,6 @@ st.markdown("""
 <div style='text-align: center; color: #666; padding: 2rem;'>
     <h4>🏥 Hospital Capacity Planning Dashboard</h4>
     <p><strong>Strategic Simulation Platform</strong> | Advanced Healthcare Analytics</p>
-    <p><em>Optimize staffing • Reduce wait times • Improve patient outcomes</em></p>
+    <p><em>Optimise staffing • Reduce wait times • Improve patient outcomes</em></p>
 </div>
 """, unsafe_allow_html=True)
