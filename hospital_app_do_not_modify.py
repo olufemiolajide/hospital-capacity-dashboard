@@ -386,35 +386,48 @@ SPECIALTY_CONFIG = {
         'doctors': 6, 'non_doctors': 2, 'doctor_rate': 18, 'non_doctor_rate': 12,
         'initial_backlog': 1100, 'initial_wait': 65, 'daily_arrivals': 142,
     },
-    'Allergy': {
+    'Anaesthesia': {
         'doctors': 8, 'non_doctors': 4, 'doctor_rate': 4, 'non_doctor_rate': 3,
         'initial_backlog': 950, 'initial_wait': 12, 'daily_arrivals': 51,
     },
-    'Child and Adolescent Services': {
+    'Psychiatry': {
         'doctors': 6, 'non_doctors': 8, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 1150, 'initial_wait': 85, 'daily_arrivals': 106,
     },
-    'Dentistry': {
+    'Emergency Medicine': {
         'doctors': 12, 'non_doctors': 15, 'doctor_rate': 25, 'non_doctor_rate': 15,
         'initial_backlog': 1200, 'initial_wait': 1, 'daily_arrivals': 530,
     },
-    'Endocrinology': {
+    'Obs_Gyn': {
         'doctors': 6, 'non_doctors': 8, 'doctor_rate': 12, 'non_doctor_rate': 8,
         'initial_backlog': 930, 'initial_wait': 25, 'daily_arrivals': 148,
     },
-    'General Paediatrics': {
+    'Paediatrics': {
         'doctors': 8, 'non_doctors': 12, 'doctor_rate': 12, 'non_doctor_rate': 8,
         'initial_backlog': 960, 'initial_wait': 18, 'daily_arrivals': 200,
     },
-    'Nephrology': {
+    'Microbiology': {
         'doctors': 2, 'non_doctors': 8, 'doctor_rate': 20, 'non_doctor_rate': 25,
         'initial_backlog': 880, 'initial_wait': 3, 'daily_arrivals': 255,
     },
-    'Oral Surgery': {
+    'Plastic': {
         'doctors': 4, 'non_doctors': 3, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 990, 'initial_wait': 65, 'daily_arrivals': 59,
     },
-
+    
+    # Balanced Specialties (Near Capacity Match)
+    'Cardiothoracic Surgery': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 3, 'non_doctor_rate': 2,
+        'initial_backlog': 900, 'initial_wait': 60, 'daily_arrivals': 12,
+    },
+    'Genetics': {
+        'doctors': 1, 'non_doctors': 2, 'doctor_rate': 4, 'non_doctor_rate': 3,
+        'initial_backlog': 870, 'initial_wait': 45, 'daily_arrivals': 11,
+    },
+    'Immunology': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 6, 'non_doctor_rate': 4,
+        'initial_backlog': 880, 'initial_wait': 38, 'daily_arrivals': 23,
+    },
     'Haematology': {
         'doctors': 3, 'non_doctors': 4, 'doctor_rate': 7, 'non_doctor_rate': 5,
         'initial_backlog': 860, 'initial_wait': 32, 'daily_arrivals': 41,
@@ -423,12 +436,48 @@ SPECIALTY_CONFIG = {
         'doctors': 2, 'non_doctors': 4, 'doctor_rate': 2, 'non_doctor_rate': 1,
         'initial_backlog': 890, 'initial_wait': 75, 'daily_arrivals': 9,
     },
-
+    'ENT': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 14, 'non_doctor_rate': 10,
+        'initial_backlog': 950, 'initial_wait': 30, 'daily_arrivals': 61,
+    },
     'Gastroenterology': {
         'doctors': 4, 'non_doctors': 3, 'doctor_rate': 7, 'non_doctor_rate': 5,
         'initial_backlog': 900, 'initial_wait': 45, 'daily_arrivals': 43,
     },
-
+    'Orthopedics': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 12, 'non_doctor_rate': 8,
+        'initial_backlog': 1200, 'initial_wait': 52, 'daily_arrivals': 53,
+    },
+    
+    # High-Performing Specialties (Excess Capacity)
+    'General Surgery': {
+        'doctors': 8, 'non_doctors': 6, 'doctor_rate': 6, 'non_doctor_rate': 4,
+        'initial_backlog': 1100, 'initial_wait': 48, 'daily_arrivals': 69,
+    },
+    'Genito-Urinary': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 10, 'non_doctor_rate': 7,
+        'initial_backlog': 900, 'initial_wait': 28, 'daily_arrivals': 42,
+    },
+    'ICU': {
+        'doctors': 10, 'non_doctors': 20, 'doctor_rate': 8, 'non_doctor_rate': 4,
+        'initial_backlog': 870, 'initial_wait': 2, 'daily_arrivals': 155,
+    },
+    'Oncology': {
+        'doctors': 5, 'non_doctors': 6, 'doctor_rate': 5, 'non_doctor_rate': 4,
+        'initial_backlog': 920, 'initial_wait': 42, 'daily_arrivals': 45,
+    },
+    'Ophthalmology': {
+        'doctors': 4, 'non_doctors': 3, 'doctor_rate': 16, 'non_doctor_rate': 12,
+        'initial_backlog': 940, 'initial_wait': 55, 'daily_arrivals': 98,
+    },
+    'Paed Surg': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 4, 'non_doctor_rate': 3,
+        'initial_backlog': 880, 'initial_wait': 45, 'daily_arrivals': 14,
+    },
+    'Public Health': {
+        'doctors': 3, 'non_doctors': 6, 'doctor_rate': 15, 'non_doctor_rate': 12,
+        'initial_backlog': 1010, 'initial_wait': 15, 'daily_arrivals': 112
+    },
     'Cardiology': {
         'doctors': 5, 'non_doctors': 3, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 900, 'initial_wait': 40, 'daily_arrivals': 55,
@@ -784,35 +833,26 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
     # Professional rate mappings
     rate_mappings = {
         'doctor_rates': {
-            'Cardiology': '8/day', 
-            'Dermatology': '12/day', 
-            'Allergy': '6/day',
-            'Child and Adolescent Services': '7/day', 
-            'Dentistry': '18/day', 
-            'Endocrinology': '4/day',
-            'General Paediatrics': '3/day', 
-            'Nephrology': '8/day', 
-            'Oral Surgery': '4/day',
-            'Haematology': '6/day', 
-            'Neurosurgery': '25/day', 
-            'Gastroenterology': '6/day',
-            'Neurology': '10/day'
+            'Cardiology': '8/day', 'Orthopedics': '12/day', 'Neurology': '6/day',
+            'Gastroenterology': '7/day', 'Dermatology': '18/day', 'Anaesthesia': '4/day',
+            'Cardiothoracic Surgery': '3/day', 'Psychiatry': '8/day', 'Genetics': '4/day',
+            'Immunology': '6/day', 'Emergency Medicine': '25/day', 'General Surgery': '6/day',
+            'Genito-Urinary': '10/day', 'Haematology': '7/day', 'ICU': '8/day',
+            'Microbiology': '20/day', 'Oncology': '5/day', 'Neurosurgery': '2/day',
+            'Obs_Gyn': '12/day', 'Ophthalmology': '16/day', 'ENT': '14/day',
+            'Paediatrics': '12/day', 'Paed Surg': '4/day', 'Plastic': '8/day',
+            'Public Health': '15/day'
         },
-
         'non_doctor_rates': {
-            'Cardiology': '6/day', 
-            'Dermatology': '8/day', 
-            'Allergy': '8/day', 
-            'Child and Adolescent Services': '5/day',
-            'Dentistry': '5/day', 
-            'Endocrinology': '12/day', 
-            'General Paediatrics': '3/day',
-            'Nephrology': '2/day', 
-            'Oral Surgery': '6/day', 
-            'Haematology': '3/day',
-            'Neurosurgery': '4/day', 
-            'Gastroenterology': '15/day', 
-            'Neurology': '4/day'
+            'Cardiology': '6/day', 'Orthopedics': '8/day', 'Neurology': '5/day',
+            'Gastroenterology': '5/day', 'Dermatology': '12/day', 'Anaesthesia': '3/day',
+            'Cardiothoracic Surgery': '2/day', 'Psychiatry': '6/day', 'Genetics': '3/day',
+            'Immunology': '4/day', 'Emergency Medicine': '15/day', 'General Surgery': '4/day',
+            'Genito-Urinary': '7/day', 'Haematology': '5/day', 'ICU': '4/day',
+            'Microbiology': '25/day', 'Oncology': '4/day', 'Neurosurgery': '1/day',
+            'Obs_Gyn': '8/day', 'Ophthalmology': '12/day', 'ENT': '10/day',
+            'Paediatrics': '8/day', 'Paed Surg': '3/day', 'Plastic': '6/day',
+            'Public Health': '12/day'
         }
     }
     

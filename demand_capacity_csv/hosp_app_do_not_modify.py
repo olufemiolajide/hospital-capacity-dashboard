@@ -68,7 +68,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <h1>🏥 Hospital Capacity Planning Dashboard</h1>
-    <p>Strategic simulation tool for optimising staffing and reducing patient wait times</p>
+    <p>Strategic simulation tool for optimizing staffing and reducing patient wait times</p>
     <p><em>Comprehensive analysis across 25 medical specialties</em></p>
 </div>
 """, unsafe_allow_html=True)
@@ -153,7 +153,7 @@ def calculate_metrics(specialty, doctors, non_doctors, doctor_rate, non_doctor_r
     Calculate comprehensive performance metrics for a hospital specialty.
     
     Returns dictionary with all key performance indicators including:
-    - Capacity utilisation
+    - Capacity utilization
     - Backlog projections
     - Wait time forecasts
     - Resource requirements
@@ -210,7 +210,7 @@ def calculate_metrics(specialty, doctors, non_doctors, doctor_rate, non_doctor_r
         'Wait Change (weeks)': int(round(wait_change, 0)),
         'Time to Clear': time_to_clear,
         'Months to Clear': months_to_clear,
-        'Utilisation (%)': int(round((daily_arrivals / daily_capacity) * 100, 0)),
+        'Utilization (%)': int(round((daily_arrivals / daily_capacity) * 100, 0)),
         'Status': status,
         'Status Class': status_class
     }
@@ -223,7 +223,7 @@ def run_detailed_simulation(specialty_config, simulation_days):
     - Patient backlogs
     - Wait times
     - Treatment capacity
-    - Resource utilisation
+    - Resource utilization
     """
     detailed_results = []
     
@@ -372,49 +372,62 @@ simulation_days = st.sidebar.slider(
     max_value=365, 
     value=180, 
     step=30,
-    help="Select the time horison for capacity planning analysis"
+    help="Select the time horizon for capacity planning analysis"
 )
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🏥 Specialty Configuration")
 
 # Comprehensive hospital specialty configuration
-# Organised by capacity deficit levels for realistic modeling
+# Organized by capacity deficit levels for realistic modeling
 SPECIALTY_CONFIG = {
     # High-Demand Specialties (Capacity Constrained)
     'Dermatology': {
         'doctors': 6, 'non_doctors': 2, 'doctor_rate': 18, 'non_doctor_rate': 12,
         'initial_backlog': 1100, 'initial_wait': 65, 'daily_arrivals': 142,
     },
-    'Allergy': {
+    'Anaesthesia': {
         'doctors': 8, 'non_doctors': 4, 'doctor_rate': 4, 'non_doctor_rate': 3,
         'initial_backlog': 950, 'initial_wait': 12, 'daily_arrivals': 51,
     },
-    'Child and Adolescent Services': {
+    'Psychiatry': {
         'doctors': 6, 'non_doctors': 8, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 1150, 'initial_wait': 85, 'daily_arrivals': 106,
     },
-    'Dentistry': {
+    'Emergency Medicine': {
         'doctors': 12, 'non_doctors': 15, 'doctor_rate': 25, 'non_doctor_rate': 15,
         'initial_backlog': 1200, 'initial_wait': 1, 'daily_arrivals': 530,
     },
-    'Endocrinology': {
+    'Obs_Gyn': {
         'doctors': 6, 'non_doctors': 8, 'doctor_rate': 12, 'non_doctor_rate': 8,
         'initial_backlog': 930, 'initial_wait': 25, 'daily_arrivals': 148,
     },
-    'General Paediatrics': {
+    'Paediatrics': {
         'doctors': 8, 'non_doctors': 12, 'doctor_rate': 12, 'non_doctor_rate': 8,
         'initial_backlog': 960, 'initial_wait': 18, 'daily_arrivals': 200,
     },
-    'Nephrology': {
+    'Microbiology': {
         'doctors': 2, 'non_doctors': 8, 'doctor_rate': 20, 'non_doctor_rate': 25,
         'initial_backlog': 880, 'initial_wait': 3, 'daily_arrivals': 255,
     },
-    'Oral Surgery': {
+    'Plastic': {
         'doctors': 4, 'non_doctors': 3, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 990, 'initial_wait': 65, 'daily_arrivals': 59,
     },
-
+    
+    # Balanced Specialties (Near Capacity Match)
+    'Cardiothoracic Surgery': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 3, 'non_doctor_rate': 2,
+        'initial_backlog': 900, 'initial_wait': 60, 'daily_arrivals': 12,
+    },
+    'Genetics': {
+        'doctors': 1, 'non_doctors': 2, 'doctor_rate': 4, 'non_doctor_rate': 3,
+        'initial_backlog': 870, 'initial_wait': 45, 'daily_arrivals': 11,
+    },
+    'Immunology': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 6, 'non_doctor_rate': 4,
+        'initial_backlog': 880, 'initial_wait': 38, 'daily_arrivals': 23,
+    },
     'Haematology': {
         'doctors': 3, 'non_doctors': 4, 'doctor_rate': 7, 'non_doctor_rate': 5,
         'initial_backlog': 860, 'initial_wait': 32, 'daily_arrivals': 41,
@@ -423,12 +436,48 @@ SPECIALTY_CONFIG = {
         'doctors': 2, 'non_doctors': 4, 'doctor_rate': 2, 'non_doctor_rate': 1,
         'initial_backlog': 890, 'initial_wait': 75, 'daily_arrivals': 9,
     },
-
+    'ENT': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 14, 'non_doctor_rate': 10,
+        'initial_backlog': 950, 'initial_wait': 30, 'daily_arrivals': 61,
+    },
     'Gastroenterology': {
         'doctors': 4, 'non_doctors': 3, 'doctor_rate': 7, 'non_doctor_rate': 5,
         'initial_backlog': 900, 'initial_wait': 45, 'daily_arrivals': 43,
     },
-
+    'Orthopedics': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 12, 'non_doctor_rate': 8,
+        'initial_backlog': 1200, 'initial_wait': 52, 'daily_arrivals': 53,
+    },
+    
+    # High-Performing Specialties (Excess Capacity)
+    'General Surgery': {
+        'doctors': 8, 'non_doctors': 6, 'doctor_rate': 6, 'non_doctor_rate': 4,
+        'initial_backlog': 1100, 'initial_wait': 48, 'daily_arrivals': 69,
+    },
+    'Genito-Urinary': {
+        'doctors': 3, 'non_doctors': 2, 'doctor_rate': 10, 'non_doctor_rate': 7,
+        'initial_backlog': 900, 'initial_wait': 28, 'daily_arrivals': 42,
+    },
+    'ICU': {
+        'doctors': 10, 'non_doctors': 20, 'doctor_rate': 8, 'non_doctor_rate': 4,
+        'initial_backlog': 870, 'initial_wait': 2, 'daily_arrivals': 155,
+    },
+    'Oncology': {
+        'doctors': 5, 'non_doctors': 6, 'doctor_rate': 5, 'non_doctor_rate': 4,
+        'initial_backlog': 920, 'initial_wait': 42, 'daily_arrivals': 45,
+    },
+    'Ophthalmology': {
+        'doctors': 4, 'non_doctors': 3, 'doctor_rate': 16, 'non_doctor_rate': 12,
+        'initial_backlog': 940, 'initial_wait': 55, 'daily_arrivals': 98,
+    },
+    'Paed Surg': {
+        'doctors': 2, 'non_doctors': 3, 'doctor_rate': 4, 'non_doctor_rate': 3,
+        'initial_backlog': 880, 'initial_wait': 45, 'daily_arrivals': 14,
+    },
+    'Public Health': {
+        'doctors': 3, 'non_doctors': 6, 'doctor_rate': 15, 'non_doctor_rate': 12,
+        'initial_backlog': 1010, 'initial_wait': 15, 'daily_arrivals': 112
+    },
     'Cardiology': {
         'doctors': 5, 'non_doctors': 3, 'doctor_rate': 8, 'non_doctor_rate': 6,
         'initial_backlog': 900, 'initial_wait': 40, 'daily_arrivals': 55,
@@ -622,12 +671,12 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         )
     
     with col3:
-        avg_utilisation = int(results_df['Utilisation (%)'].mean())
-        color = "normal" if 80 <= avg_utilisation <= 95 else "inverse"
+        avg_utilization = int(results_df['Utilization (%)'].mean())
+        color = "normal" if 80 <= avg_utilization <= 95 else "inverse"
         st.metric(
-            "Average Utilisation", 
-            f"{avg_utilisation}%",
-            help="Hospital-wide capacity utilisation rate"
+            "Average Utilization", 
+            f"{avg_utilization}%",
+            help="Hospital-wide capacity utilization rate"
         )
     
     with col4:
@@ -667,7 +716,7 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         best_10['Backlog Change'] = best_10['Backlog Change'].apply(lambda x: f"{int(x):+,}")
         st.dataframe(best_10, use_container_width=True, height=350)
     
-    # Comprehensive performance visualisation
+    # Comprehensive performance visualization
     st.header("📊 Performance Analytics")
     
     col1, col2, col3 = st.columns(3)
@@ -707,15 +756,15 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         st.plotly_chart(fig_wait, use_container_width=True)
     
     with col3:
-        # Capacity utilisation analysis
+        # Capacity utilization analysis
         fig_util = px.bar(
             results_df,
             x='Specialty',
-            y='Utilisation (%)',
-            color='Utilisation (%)',
+            y='Utilization (%)',
+            color='Utilization (%)',
             color_continuous_scale=['green', 'yellow', 'red'],
-            title="Capacity Utilisation by Specialty",
-            text='Utilisation (%)'
+            title="Capacity Utilization by Specialty",
+            text='Utilization (%)'
         )
         fig_util.update_traces(texttemplate='%{text:.0f}%', textposition='outside')
         fig_util.add_hline(
@@ -726,7 +775,7 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
         )
         fig_util.update_layout(showlegend=False, height=450)
         fig_util.update_xaxes(tickangle=45, title="Medical Specialty")
-        fig_util.update_yaxes(title="Utilisation Rate (%)")
+        fig_util.update_yaxes(title="Utilization Rate (%)")
         st.plotly_chart(fig_util, use_container_width=True)
     
     # Time series trend analysis
@@ -784,35 +833,26 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
     # Professional rate mappings
     rate_mappings = {
         'doctor_rates': {
-            'Cardiology': '8/day', 
-            'Dermatology': '12/day', 
-            'Allergy': '6/day',
-            'Child and Adolescent Services': '7/day', 
-            'Dentistry': '18/day', 
-            'Endocrinology': '4/day',
-            'General Paediatrics': '3/day', 
-            'Nephrology': '8/day', 
-            'Oral Surgery': '4/day',
-            'Haematology': '6/day', 
-            'Neurosurgery': '25/day', 
-            'Gastroenterology': '6/day',
-            'Neurology': '10/day'
+            'Cardiology': '8/day', 'Orthopedics': '12/day', 'Neurology': '6/day',
+            'Gastroenterology': '7/day', 'Dermatology': '18/day', 'Anaesthesia': '4/day',
+            'Cardiothoracic Surgery': '3/day', 'Psychiatry': '8/day', 'Genetics': '4/day',
+            'Immunology': '6/day', 'Emergency Medicine': '25/day', 'General Surgery': '6/day',
+            'Genito-Urinary': '10/day', 'Haematology': '7/day', 'ICU': '8/day',
+            'Microbiology': '20/day', 'Oncology': '5/day', 'Neurosurgery': '2/day',
+            'Obs_Gyn': '12/day', 'Ophthalmology': '16/day', 'ENT': '14/day',
+            'Paediatrics': '12/day', 'Paed Surg': '4/day', 'Plastic': '8/day',
+            'Public Health': '15/day'
         },
-
         'non_doctor_rates': {
-            'Cardiology': '6/day', 
-            'Dermatology': '8/day', 
-            'Allergy': '8/day', 
-            'Child and Adolescent Services': '5/day',
-            'Dentistry': '5/day', 
-            'Endocrinology': '12/day', 
-            'General Paediatrics': '3/day',
-            'Nephrology': '2/day', 
-            'Oral Surgery': '6/day', 
-            'Haematology': '3/day',
-            'Neurosurgery': '4/day', 
-            'Gastroenterology': '15/day', 
-            'Neurology': '4/day'
+            'Cardiology': '6/day', 'Orthopedics': '8/day', 'Neurology': '5/day',
+            'Gastroenterology': '5/day', 'Dermatology': '12/day', 'Anaesthesia': '3/day',
+            'Cardiothoracic Surgery': '2/day', 'Psychiatry': '6/day', 'Genetics': '3/day',
+            'Immunology': '4/day', 'Emergency Medicine': '15/day', 'General Surgery': '4/day',
+            'Genito-Urinary': '7/day', 'Haematology': '5/day', 'ICU': '4/day',
+            'Microbiology': '25/day', 'Oncology': '4/day', 'Neurosurgery': '1/day',
+            'Obs_Gyn': '8/day', 'Ophthalmology': '12/day', 'ENT': '10/day',
+            'Paediatrics': '8/day', 'Paed Surg': '3/day', 'Plastic': '6/day',
+            'Public Health': '12/day'
         }
     }
     
@@ -931,8 +971,8 @@ if hasattr(st.session_state, 'simulation_run') and st.session_state.simulation_r
     st.info("""
     **📋 Recommended Actions:**
     • **Resource Reallocation**: Redirect staff from high-performing to critical specialties
-    • **Capacity Expansion**: Prioritise hiring for departments with >100% utilisation
-    • **Process Optimisation**: Implement efficiency improvements in bottleneck areas
+    • **Capacity Expansion**: Prioritize hiring for departments with >100% utilization
+    • **Process Optimization**: Implement efficiency improvements in bottleneck areas
     • **Strategic Planning**: Develop long-term capacity plans for sustainable growth
     """)
     
@@ -975,16 +1015,16 @@ else:
     **📊 Comprehensive Analysis**
     • Model capacity across 25 medical specialties
     • Forecast patient wait times and backlog trends
-    • Analyse resource utilisation and efficiency
+    • Analyze resource utilization and efficiency
     
     **🎯 Strategic Planning**
     • Test staffing scenarios before implementation
     • Identify critical capacity constraints
-    • Optimise resource allocation decisions
+    • Optimize resource allocation decisions
     
     **📈 Performance Monitoring**
     • Track department-level performance metrics
-    • Monitor system-wide capacity utilisation
+    • Monitor system-wide capacity utilization
     • Generate executive-ready reports
     
     ### **Enhanced Features**
@@ -1001,7 +1041,7 @@ else:
     2. **Configure Parameters**: Adjust individual specialties if needed
     3. **Set Time Horizon**: Choose simulation duration (30-365 days)
     4. **Run Analysis**: Execute comprehensive capacity modeling
-    5. **Review Results**: Analyse performance metrics and strategic recommendations
+    5. **Review Results**: Analyze performance metrics and strategic recommendations
     6. **Export Data**: Download results for presentations and further analysis
     
     ### **Key Features**
@@ -1020,6 +1060,6 @@ st.markdown("""
 <div style='text-align: center; color: #666; padding: 2rem;'>
     <h4>🏥 Hospital Capacity Planning Dashboard</h4>
     <p><strong>Strategic Simulation Platform</strong> | Advanced Healthcare Analytics</p>
-    <p><em>Optimise staffing • Reduce wait times • Improve patient outcomes</em></p>
+    <p><em>Optimize staffing • Reduce wait times • Improve patient outcomes</em></p>
 </div>
 """, unsafe_allow_html=True)
