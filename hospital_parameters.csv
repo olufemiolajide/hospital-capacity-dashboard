@@ -1,26 +1,14 @@
 Specialty,Doctors,Non_Doctors,Doctor_Rate,Non_Doctor_Rate,Initial_Backlog,Initial_Wait,Daily_Arrivals
-Dermatology,6,2,18,12,1100,65,142
-Anaesthesia,8,4,4,3,950,12,51
-Psychiatry,6,8,8,6,1150,85,106
-Emergency Medicine,50,15,25,15,1200,1,530
-Obs_Gyn,6,8,12,8,930,25,148
-Paediatrics,8,12,12,8,960,18,200
-Microbiology,2,8,20,25,880,3,255
-Plastic,4,3,8,6,990,65,59
-Cardiothoracic Surgery,2,3,3,2,900,60,12
-Genetics,1,2,4,3,870,45,11
-Immunology,2,3,6,4,880,38,23
-Haematology,3,4,7,5,860,32,41
-Neurosurgery,2,4,2,1,890,75,9
-ENT,3,2,14,10,950,30,61
-Gastroenterology,4,3,7,5,900,45,43
-Orthopedics,3,2,12,8,1200,52,53
-General Surgery,8,6,6,4,1100,48,69
-Genito-Urinary,3,2,10,7,900,28,42
-ICU,10,20,8,4,870,2,155
-Oncology,5,6,5,4,920,42,45
-Ophthalmology,4,3,16,12,940,55,98
-Paed Surg,2,3,4,3,880,45,14
-Public Health,3,6,15,12,1010,15,112
-Cardiology,5,3,8,6,900,40,55
-Neurology,2,4,6,5,950,35,30
+Allergy,6,2,18,12,1100,65,142
+Cardiology,8,4,4,3,950,12,51
+Child and Adolescent Services,6,8,8,6,1150,85,106
+Dentistry,50,15,25,15,1200,1,530
+Dermatology,6,8,12,8,930,25,148
+Endocrinology,8,12,12,8,960,18,200
+Gastroenterology,2,8,20,25,880,3,255
+General Paediatrics,4,3,8,6,990,65,59
+Haematology,2,3,3,2,900,60,12
+Nephrology,1,2,4,3,870,45,11
+Neurology,2,3,6,4,880,38,23
+Neurosurgery,3,4,7,5,860,32,41
+Oral Surgery,2,4,2,1,890,75,9
